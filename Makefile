@@ -8,7 +8,7 @@ docs:
 	cd $(DOCS) && $(MAKE) clean && $(MAKE) html
 
 docs-online: docs
-	ghp-import -np $(DOCS)/_build/html -r origin
+	ghp-import -np $(DOCS)/_build/html -r upstream
 
 tests:
 	py.test tests

@@ -23,6 +23,7 @@
 , bootstrapped-pip
 , stdenv
 , python
+, nbsphinx
 , development ? false
 }:
 
@@ -51,7 +52,7 @@ in buildPythonPackage rec {
   src = "${sdist}/${pname}*";
 
   checkInputs = [ pytest glibcLocales ];
-  nativeBuildInputs = lib.optionals development [ sphinx pylint yapf ];
+  nativeBuildInputs = lib.optionals development [ sphinx pylint yapf nbsphinx ];
   propagatedBuildInputs = [ cytoolz numpy scipy matplotlib pandas six tabulate ];
 
   meta = {
@@ -65,4 +66,6 @@ in buildPythonPackage rec {
   '';
 
   passthru.sdist = sdist;
+
+  doCheck = false;
 }

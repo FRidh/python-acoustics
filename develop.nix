@@ -4,8 +4,9 @@
 
 let
   pkgs = import <nixpkgs> {};
-  python = pkgs.python3;
-
-in pkgs.callPackage ./default.nix {
-  inherit (python.pkgs) buildPythonPackage pytest cytoolz numpy scipy matplotlib pandas six tabulate;
-}
+  python = pkgs.python3.override {
+    packageOverrides = self: super: {
+      acoustics = super.callPackage ./default.nix { };
+    };
+  };
+in (python.withPackages(ps: with ps; [ ipython acoustics ])).env

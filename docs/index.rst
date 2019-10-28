@@ -7,14 +7,13 @@ Welcome to the documentation of the acoustics module!
 =====================================================
 
 
-
-
 Contents:
 
 
 .. toctree::
    :maxdepth: 1
-   
+
+   examples
    reference
 
 Indices and tables
